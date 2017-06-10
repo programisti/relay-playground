@@ -19371,7 +19371,7 @@ var Comment = function (_React$Component) {
                 var node = _ref.node;
                 return _react2.default.createElement(
                   'div',
-                  null,
+                  { key: node.id },
                   _react2.default.createElement(
                     'strong',
                     null,
