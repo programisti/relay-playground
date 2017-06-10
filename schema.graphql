@@ -13,22 +13,7 @@ type AddToAuthorOnCommentPayload {
   commentsCommentEdge: CommentEdge
 }
 
-input AddToAuthorOnPostAuthorInput {
-  postsPostId: ID!
-  authorAuthorId: ID!
-  clientMutationId: String!
-}
-
-type AddToAuthorOnPostPayload {
-  viewer: Viewer!
-  clientMutationId: String!
-  authorAuthor: Author
-  postsPost: Post
-  authorAuthorEdge: AuthorEdge
-  postsPostEdge: PostEdge
-}
-
-type AddToPostOnCommentPayload {
+type AddToCommentOnPostPayload {
   viewer: Viewer!
   clientMutationId: String!
   postPost: Post
@@ -37,10 +22,25 @@ type AddToPostOnCommentPayload {
   commentsCommentEdge: CommentEdge
 }
 
-input AddToPostOnCommentPostInput {
+input AddToCommentOnPostPostInput {
   commentsCommentId: ID!
   postPostId: ID!
   clientMutationId: String!
+}
+
+input AddToPostOnAuthorAuthorInput {
+  postsPostId: ID!
+  authorAuthorId: ID!
+  clientMutationId: String!
+}
+
+type AddToPostOnAuthorPayload {
+  viewer: Viewer!
+  clientMutationId: String!
+  authorAuthor: Author
+  postsPost: Post
+  authorAuthorEdge: AuthorEdge
+  postsPostEdge: PostEdge
 }
 
 type Author implements Node {
@@ -728,11 +728,11 @@ type Mutation {
   deletePost(input: DeletePostInput!): DeletePostPayload
   deleteUser(input: DeleteUserInput!): DeleteUserPayload
   addToAuthorOnComment(input: AddToAuthorOnCommentAuthorInput!): AddToAuthorOnCommentPayload
-  addToAuthorOnPost(input: AddToAuthorOnPostAuthorInput!): AddToAuthorOnPostPayload
-  addToPostOnComment(input: AddToPostOnCommentPostInput!): AddToPostOnCommentPayload
+  addToCommentOnPost(input: AddToCommentOnPostPostInput!): AddToCommentOnPostPayload
+  addToPostOnAuthor(input: AddToPostOnAuthorAuthorInput!): AddToPostOnAuthorPayload
   removeFromAuthorOnComment(input: RemoveFromAuthorOnCommentAuthorInput!): RemoveFromAuthorOnCommentPayload
-  removeFromAuthorOnPost(input: RemoveFromAuthorOnPostAuthorInput!): RemoveFromAuthorOnPostPayload
-  removeFromPostOnComment(input: RemoveFromPostOnCommentPostInput!): RemoveFromPostOnCommentPayload
+  removeFromCommentOnPost(input: RemoveFromCommentOnPostPostInput!): RemoveFromCommentOnPostPayload
+  removeFromPostOnAuthor(input: RemoveFromPostOnAuthorAuthorInput!): RemoveFromPostOnAuthorPayload
   createUser(input: SignupUserInput!): CreateUserPayload!
 }
 
@@ -956,22 +956,7 @@ type RemoveFromAuthorOnCommentPayload {
   commentsCommentEdge: CommentEdge
 }
 
-input RemoveFromAuthorOnPostAuthorInput {
-  postsPostId: ID!
-  authorAuthorId: ID!
-  clientMutationId: String!
-}
-
-type RemoveFromAuthorOnPostPayload {
-  viewer: Viewer!
-  clientMutationId: String!
-  authorAuthor: Author
-  postsPost: Post
-  authorAuthorEdge: AuthorEdge
-  postsPostEdge: PostEdge
-}
-
-type RemoveFromPostOnCommentPayload {
+type RemoveFromCommentOnPostPayload {
   viewer: Viewer!
   clientMutationId: String!
   postPost: Post
@@ -980,10 +965,25 @@ type RemoveFromPostOnCommentPayload {
   commentsCommentEdge: CommentEdge
 }
 
-input RemoveFromPostOnCommentPostInput {
+input RemoveFromCommentOnPostPostInput {
   commentsCommentId: ID!
   postPostId: ID!
   clientMutationId: String!
+}
+
+input RemoveFromPostOnAuthorAuthorInput {
+  postsPostId: ID!
+  authorAuthorId: ID!
+  clientMutationId: String!
+}
+
+type RemoveFromPostOnAuthorPayload {
+  viewer: Viewer!
+  clientMutationId: String!
+  authorAuthor: Author
+  postsPost: Post
+  authorAuthorEdge: AuthorEdge
+  postsPostEdge: PostEdge
 }
 
 input SignupUserInput {
